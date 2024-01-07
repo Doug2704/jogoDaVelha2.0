@@ -1,7 +1,7 @@
-package main.enteties;
+package main.entities;
 
 public class Board {
-	char[][] board = new char[3][3];
+	public char[][] board = new char[3][3];
 	public int row, column;
 
 	public Board() {
@@ -22,10 +22,21 @@ public class Board {
 
 	}
 
-	public void marcar(int row, int column) {
+	public void markUp(int row, int column) {
 
-		board[row][column] = 'X';
+		board[row - 1][column - 1] = 'X';
 
 	}
 
+	public boolean isBoardFull() {
+		for (int i = 0; i < board.length; i++) {
+			for (int j = 0; j < board[i].length; j++) {
+				if (board[i][j] != '_') {// se encontrar um que seja vazio retorna true
+					return true;
+				}
+			}
+		}
+		return false;
+
+	}
 }
