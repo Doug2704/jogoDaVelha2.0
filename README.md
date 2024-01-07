@@ -1,4 +1,4 @@
-# jogoDaVelha2.0
+# Jogo da Velha 2.0
 
 Criando o jogo da velha 2.0 em java do zero.
 Essa é uma evolução do jogo tradicional, onde cada casa tem outro jogo dentro, passado de 9 casas para 81 casas.
