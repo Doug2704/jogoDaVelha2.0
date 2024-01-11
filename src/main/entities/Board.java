@@ -1,8 +1,9 @@
 package main.entities;
 
 public class Board {
-	public char[][] board = new char[3][3];
+	public static char[][] board = new char[3][3];
 	public int row, column;
+	public Player player = new Player();
 
 	public Board() {
 		for (int i = 0; i < board.length; i++) {
@@ -23,20 +24,15 @@ public class Board {
 	}
 
 	public void markUp(int row, int column) {
-
-		board[row - 1][column - 1] = 'X';
+		//player.setSimbol('X');
+		board[row - 1][column - 1] = player.getSimbol();
 
 	}
 
-	public boolean isBoardFull() {
-		for (int i = 0; i < board.length; i++) {
-			for (int j = 0; j < board[i].length; j++) {
-				if (board[i][j] != '_') {// se encontrar um que seja vazio retorna true
-					return true;
-				}
-			}
+	public boolean isSquareSelected() {
+		if (Board.board[2][2] == '_') {
+			return true;
 		}
 		return false;
-
 	}
 }

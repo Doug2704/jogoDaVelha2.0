@@ -1,39 +1,45 @@
 package test;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import main.entities.Board;
+import main.entities.Player;
 
 public class BoardTest {
 	private Board board;
+	private Player player;
 
 	@Before
 	public void setUp() {
 		board = new Board();
+		player = new Player();
 	}
 
 	@Test
 	public void testBoard() {
 		char[][] expectedBoard = { { '_', '_', '_' }, { '_', '_', '_' }, { '_', '_', '_' } };
 
-		assertArrayEquals(expectedBoard, board.board);
+		assertArrayEquals(expectedBoard, Board.board);
 	}
 
 	@Test
 	public void testMarkUp() {
+		
 		board.markUp(2, 2);
 		char[][] expectedBoard = { { '_', '_', '_' }, { '_', 'X', '_' }, { '_', '_', '_' } };
-		assertArrayEquals(expectedBoard, board.board);
+		assertNotNull(Board.board);
+		assertArrayEquals(expectedBoard, Board.board);
 	}
 
 	@Test
 	public void testIsBoardFull() {
-		assertFalse(board.isBoardFull());
-		//falta implementar o teste para validar true, caso esteja com todos os índices preenchidos
+
+		assertFalse(board.isSquareSelected());
 	}
+
 }
