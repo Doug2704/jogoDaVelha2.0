@@ -11,35 +11,37 @@ import main.entities.Board;
 import main.entities.Player;
 
 public class BoardTest {
-	private Board board;
-	private Player player;
+	private Board testBoard;
+	private Player testPlayer;
 
 	@Before
 	public void setUp() {
-		board = new Board();
-		player = new Player();
+		testBoard = new Board();
+		testPlayer = new Player(); //não é a mesma instância Player da classe Board
+
 	}
 
 	@Test
 	public void testBoard() {
 		char[][] expectedBoard = { { '_', '_', '_' }, { '_', '_', '_' }, { '_', '_', '_' } };
 
-		assertArrayEquals(expectedBoard, Board.board);
+		assertArrayEquals(expectedBoard, testBoard.board);
 	}
 
 	@Test
 	public void testMarkUp() {
-		
-		board.markUp(2, 2);
+		testPlayer.setSimbol('X'); //setando em outra instância != da que está na classe Board
+
+		testBoard.markUp(2, 2, testPlayer);
 		char[][] expectedBoard = { { '_', '_', '_' }, { '_', 'X', '_' }, { '_', '_', '_' } };
-		assertNotNull(Board.board);
-		assertArrayEquals(expectedBoard, Board.board);
+		assertNotNull(testBoard.board);
+		assertArrayEquals(expectedBoard, testBoard.board);
 	}
 
 	@Test
 	public void testIsBoardFull() {
 
-		assertFalse(board.isSquareSelected());
+		assertFalse(testBoard.isSquareSelected());
 	}
 
 }

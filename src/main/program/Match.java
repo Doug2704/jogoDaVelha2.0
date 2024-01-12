@@ -13,18 +13,20 @@ public class Match {
 		Player player1 = new Player();
 		Player player2 = new Player();
 
-		for (int cont = 1; cont <= 9; cont++) {
+		for (int cont = 0; cont <= 9; cont++) {
 			board.showBoard();
 			System.out.println("digite as coordenadas");
 
 			int row = sc.nextInt();
 			int column = sc.nextInt();
 			if (cont % 2 == 0) {
-				board.player.setSimbol('O');
+				player1.setSimbol('X');
+				board.markUp(row, column, player1);
 			} else {
-				board.player.setSimbol('X');
+				player2.setSimbol('O');
+				board.markUp(row, column, player2);
 			}
-			board.markUp(row, column);
+			
 
 		}
 
