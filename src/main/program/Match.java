@@ -19,33 +19,39 @@ public class Match {
 		Board board = new Board();
 		Player player1 = new Player();
 		Player player2 = new Player();
-		player1.setSimbol('X');
-		player2.setSimbol('O');
 		Board Board = new Board();
 
+		player1.setSimbol('X');
+		player2.setSimbol('O');
+
 		for (int cont = 0; cont <= 9; cont++) {
+			System.out.println("Digite as coordenadas separadas por vírgulas (x,x): ");
 			board.showBoard();
-			System.out.println("Digite as coordenadas separadas por vírgulas");
 			String[] coord = sc.next().split(",");
-			int row = Integer.parseInt(coord[0]);
-			int column = Integer.parseInt(coord[1]);
-			
-			if (board.isSquareEmpty(row, column)) {
 
-				System.out.println(row + " " + column);
-				if (cont % 2 == 0) {
+			try {
+				int row = Integer.parseInt(coord[0]);
+				int column = Integer.parseInt(coord[1]);
 
-					board.markUp(row, column, player1);
+				if (board.isSquareEmpty(row, column)) {
+					if (cont % 2 == 0) {
+
+						board.markUp(row, column, player1);
+					} else {
+
+						board.markUp(row, column, player2);
+					}
+
 				} else {
-
-					board.markUp(row, column, player2);
+					System.out.println("Quadrado já selecionado");
+					cont = cont - 1;
 				}
 
-			} else {
-				System.out.println("Quadrado já selecionado");
+			} catch (Exception e) {
+
+				System.out.println("ERRO: " + e + "\n");
 				cont = cont - 1;
 			}
-
 		}
 		sc.close();
 	}
