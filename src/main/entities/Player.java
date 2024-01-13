@@ -1,5 +1,10 @@
 package main.entities;
 
+/***
+ * 
+ * @author Douglas
+ *
+ */
 public class Player {
 	private String name;
 	private char simbol;
