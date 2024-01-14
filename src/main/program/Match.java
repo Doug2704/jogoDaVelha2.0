@@ -46,6 +46,10 @@ public class Match {
 					System.out.println("Quadrado já selecionado");
 					cont = cont - 1;
 				}
+				if (board.winMatch()) {
+					System.out.println(player1.getSimbol() + " Ganhou");
+					cont = 10;
+				}
 
 			} catch (Exception e) {
 

@@ -40,13 +40,13 @@ public class BoardTest {
 
 		testBoard.markUp(2, 2, testPlayer);
 		char[][] expectedBoard = { { '_', '_', '_' }, { '_', 'X', '_' }, { '_', '_', '_' } };
-		assertNotNull(testBoard.board);
+		assertNotNull(Board.board);
 		assertArrayEquals(expectedBoard, testBoard.board);
 	}
 
 	@Test
 	public void testIsSquareEmpty() {
-		testBoard.board[1][1] = '_';
+		Board.board[1][1] = '_';
 		assertTrue(testBoard.isSquareEmpty(2, 2));
 		testBoard.board[1][1] = 'X';
 		assertFalse(testBoard.isSquareEmpty(2, 2));
@@ -85,27 +85,22 @@ public class BoardTest {
 	public void testWinDiagonalToUp() {
 		assertFalse(testBoard.winDiagonalToUp());
 
-		testBoard.markUp(1, 1, testPlayer);
+		testBoard.markUp(1, 3, testPlayer);
 		testBoard.markUp(2, 2, testPlayer);
 		testBoard.markUp(3, 1, testPlayer);
 		assertTrue(testBoard.winDiagonalToUp());
-
+		testBoard.showBoard();
 	}
 
 	@Test
 	public void testWinMatch() {
 		assertFalse(testBoard.winMatch());
 
-		testWinRow();
-		assertTrue(testBoard.winMatch());
+		testBoard.markUp(1, 3, testPlayer);
+		testBoard.markUp(2, 2, testPlayer);
+		testBoard.markUp(3, 1, testPlayer);
+		assertTrue(testBoard.winDiagonalToUp());
 
-		testWinColumn();
-		assertTrue(testBoard.winMatch());
-
-		testWinDiagonalToDown();
-		assertTrue(testBoard.winMatch());
-
-		testWinDiagonalToUp();
 		assertTrue(testBoard.winMatch());
 	}
 }

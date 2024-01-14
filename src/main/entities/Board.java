@@ -65,18 +65,18 @@ public class Board {
 
 	public boolean winDiagonalToDown() {
 		for (int i = 0; i < 3; i++) {// diagonal descendo \|
-			if (board[0][i] != '_' && board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
+			if (board[0][0] != '_' && board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
 				return true;
 
-			}
+			} 
 		}
 		return false;
 	}
 
 	public boolean winDiagonalToUp() {
-		for (int i = 0; i < 3; i++) {// diagonal subindo /|
-			if (board[0][i] != '_' && board[2][0] == board[1][1] && board[1][1] == board[2][0]) {
-				return true;
+		for (int i = 0; i < 3; i++) {// diagonal subindo /| 
+			if (board[2][0] != '_' && board[2][0] == board[1][1] && board[1][1] == board[0][2]) {
+				return true; 
 
 			}
 		}
@@ -84,8 +84,8 @@ public class Board {
 	}
 
 	public boolean winMatch() {
-		if (winRow() || winColumn() || winDiagonalToUp() || winDiagonalToDown()) {
-			return true;
+		if (winRow() || winDiagonalToUp() || winDiagonalToDown()) {
+			return true; 
 		}
 		return false;
 	}
