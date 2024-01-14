@@ -1,11 +1,10 @@
 package main.program;
 
-import static org.junit.jupiter.api.DynamicTest.stream;
-
 import java.util.Scanner;
 
 import main.entities.Board;
 import main.entities.Player;
+import main.entities.Win;
 
 /***
  * 
@@ -17,9 +16,9 @@ public class Match {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		Board board = new Board();
+		Win win = new Win();
 		Player player1 = new Player();
 		Player player2 = new Player();
-		Board Board = new Board();
 
 		player1.setSimbol('X');
 		player2.setSimbol('O');
@@ -46,7 +45,7 @@ public class Match {
 					System.out.println("Quadrado já selecionado");
 					cont = cont - 1;
 				}
-				if (board.winMatch()) {
+				if (win.winMatch()) {
 					System.out.println(player1.getSimbol() + " Ganhou");
 					cont = 10;
 				}
