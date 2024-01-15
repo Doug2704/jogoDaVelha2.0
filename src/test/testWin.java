@@ -25,19 +25,31 @@ public class testWin {
 
 	@Test
 	public void testWinRow() {
-		assertFalse(testWin.winRow());
+		assertFalse(testWin.winRow()); // testa se está vazio
+		
+		testBoard.markUp(2, 2, testPlayer);
+		testBoard.markUp(2, 2, testPlayer);
+		testBoard.markUp(2, 3, testPlayer);
+		assertFalse(testWin.winRow()); // testa se um dos elementos está diferente do esperado
+		
 		testBoard.markUp(2, 1, testPlayer);
 		testBoard.markUp(2, 2, testPlayer);
 		testBoard.markUp(2, 3, testPlayer);
-		assertTrue(testWin.winRow());
+		assertTrue(testWin.winRow()); // testa se todos os elementos estão iguais
 	}
 
 	@Test
 	public void testWinColumn() {
 		assertFalse(testWin.winColumn());
-		testBoard.markUp(1, 2, testPlayer);
+	
+		testBoard.markUp(1, 1, testPlayer);
 		testBoard.markUp(2, 2, testPlayer);
 		testBoard.markUp(3, 2, testPlayer);
+		assertFalse(testWin.winColumn());
+		
+		testBoard.markUp(1, 1, testPlayer);
+		testBoard.markUp(2, 1, testPlayer);
+		testBoard.markUp(3, 1, testPlayer);
 		assertTrue(testWin.winColumn());
 	}
 
@@ -66,11 +78,7 @@ public class testWin {
 	@Test
 	public void testWinMatch() {
 		assertFalse(testWin.winMatch());
-
-		testBoard.markUp(1, 3, testPlayer);
-		testBoard.markUp(2, 2, testPlayer);
-		testBoard.markUp(3, 1, testPlayer);
-
+		testWinColumn();
 		assertTrue(testWin.winMatch());
 	}
 

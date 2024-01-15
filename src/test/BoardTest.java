@@ -11,11 +11,6 @@ import org.junit.Test;
 import main.entities.Board;
 import main.entities.Player;
 
-/***
- * 
- * @author Douglas
- *
- */
 public class BoardTest {
 	private Board testBoard;
 	private Player testPlayer;

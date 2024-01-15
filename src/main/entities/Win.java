@@ -22,6 +22,7 @@ public class Win {
 			}
 		}
 		return false;
+
 	}
 
 	public boolean winDiagonalToDown() {
@@ -47,7 +48,7 @@ public class Win {
 	}
 
 	public boolean winMatch() {
-		if (winRow() || winDiagonalToUp() || winDiagonalToDown()) {
+		if (winRow() || winColumn() || winDiagonalToUp() || winDiagonalToDown()) {
 			return true;
 		}
 		return false;

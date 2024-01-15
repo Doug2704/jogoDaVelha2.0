@@ -2,13 +2,15 @@ package main.program;
 
 import java.util.Scanner;
 
+import org.junit.validator.PublicClassValidator;
+
 import main.entities.Board;
 import main.entities.Player;
 import main.entities.Win;
 
 /***
  * 
- * @author Douglas
+ * @author Douglas Candido
  *
  */
 public class Match {
@@ -22,39 +24,48 @@ public class Match {
 
 		player1.setSimbol('X');
 		player2.setSimbol('O');
+		player1.setName("Douglas");
+		player2.setName("Silvia");
 
-		for (int cont = 0; cont <= 9; cont++) {
-			System.out.println("Digite as coordenadas separadas por vírgulas (x,x): ");
-			board.showBoard();
-			String[] coord = sc.next().split(",");
+		System.out.println("Digite as coordenadas separadas por vírgulas (x,x): ");
 
-			try {
-				int row = Integer.parseInt(coord[0]);
-				int column = Integer.parseInt(coord[1]);
+		while (!win.winMatch()) {
+			for (int cont = 0; cont <= 9; cont++) {
+				board.showBoard();
+				String[] coord = sc.next().split(",");
 
-				if (board.isSquareEmpty(row, column)) {
-					if (cont % 2 == 0) {
+				try {
+					int row = Integer.parseInt(coord[0]);
+					int column = Integer.parseInt(coord[1]);
 
-						board.markUp(row, column, player1);
+					if (board.isSquareEmpty(row, column)) {
+						if (cont % 2 == 0) {
+							board.markUp(row, column, player1);
+
+						} else {
+							board.markUp(row, column, player2);
+
+						}
+
 					} else {
-
-						board.markUp(row, column, player2);
+						System.out.println("Quadrado já selecionado");
+						cont = cont - 1;
 					}
 
-				} else {
-					System.out.println("Quadrado já selecionado");
+					if (win.winMatch()) {
+						if (cont % 2 == 0) {
+							System.out.println(player1.getName() + " Ganhou");// apenas exemplo
+						} else {
+							System.out.println(player2.getName() + " Ganhou");
+						}
+					}
+				} catch (Exception e) {
+
+					System.out.println("ERRO: " + e + "\n");
 					cont = cont - 1;
 				}
-				if (win.winMatch()) {
-					System.out.println(player1.getSimbol() + " Ganhou");
-					cont = 10;
-				}
-
-			} catch (Exception e) {
-
-				System.out.println("ERRO: " + e + "\n");
-				cont = cont - 1;
 			}
+
 		}
 		sc.close();
 	}

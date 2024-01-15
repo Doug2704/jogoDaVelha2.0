@@ -2,11 +2,6 @@ package main.entities;
 
 import java.util.function.BooleanSupplier;
 
-/***
- * 
- * @author Douglas
- *
- */
 public class Board {
 	public static char[][] board = new char[3][3];
 	public int row, column;
