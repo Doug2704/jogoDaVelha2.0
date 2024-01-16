@@ -1,7 +1,9 @@
 package main.program;
 
+import java.util.Locale;
 import java.util.Scanner;
 
+import org.hamcrest.core.IsInstanceOf;
 import org.junit.validator.PublicClassValidator;
 
 import main.entities.Board;
@@ -16,6 +18,7 @@ import main.entities.Win;
 public class Match {
 
 	public static void main(String[] args) {
+
 		Scanner sc = new Scanner(System.in);
 		Board board = new Board();
 		Win win = new Win();
@@ -59,14 +62,21 @@ public class Match {
 							System.out.println(player2.getName() + " Ganhou");
 						}
 					}
-				} catch (Exception e) {
 
-					System.out.println("ERRO: " + e + "\n");
-					cont = cont - 1;
+				} catch (Exception e) {
+					if (e instanceof ArrayIndexOutOfBoundsException) {
+						System.out.println("ERRO: Fora do tabuleiro");
+					} else if (e instanceof NumberFormatException) {
+
+						System.out.println("ERRO: Caractere inválido");
+
+					} else {
+						System.out.println(e.getMessage());
+
+					}
 				}
 			}
-
+			sc.close();
 		}
-		sc.close();
 	}
 }

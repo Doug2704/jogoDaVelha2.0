@@ -25,7 +25,7 @@ public class Board {
 	}
 
 	public void markUp(int row, int column, Player player) {
-		// player.setSimbol('X');
+	
 		board[row - 1][column - 1] = player.getSimbol();
 
 	}

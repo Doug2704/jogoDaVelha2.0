@@ -78,7 +78,7 @@ public class testWin {
 	@Test
 	public void testWinMatch() {
 		assertFalse(testWin.winMatch());
-		testWinColumn();
+		testWinColumn(); 
 		assertTrue(testWin.winMatch());
 	}
 
