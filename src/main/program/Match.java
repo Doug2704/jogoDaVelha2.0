@@ -57,19 +57,24 @@ public class Match {
 
 					if (win.winMatch()) {
 						if (cont % 2 == 0) {
-							System.out.println(player1.getName() + " Ganhou");// apenas exemplo
+							System.out.println(player1.getName() + " Ganhou");
+
 						} else {
 							System.out.println(player2.getName() + " Ganhou");
+
 						}
+					} else {
+						System.out.println("Partida empatada");
 					}
 
 				} catch (Exception e) {
 					if (e instanceof ArrayIndexOutOfBoundsException) {
 						System.out.println("ERRO: Fora do tabuleiro");
+						cont--;
 					} else if (e instanceof NumberFormatException) {
 
 						System.out.println("ERRO: Caractere inválido");
-
+						cont--;
 					} else {
 						System.out.println(e.getMessage());
 
