@@ -1,10 +1,6 @@
 package main.program;
 
-import java.util.Locale;
 import java.util.Scanner;
-
-import org.hamcrest.core.IsInstanceOf;
-import org.junit.validator.PublicClassValidator;
 
 import main.entities.Board;
 import main.entities.Player;
@@ -27,14 +23,22 @@ public class Match {
 
 		player1.setSimbol('X');
 		player2.setSimbol('O');
-		player1.setName("Douglas");
-		player2.setName("Silvia");
-
+		// System.out.println("Nome do Jogador 01: ");
+		// player1.setName(sc.next());
+		// System.out.println("Nome do Jogador 02: ");
+		// player2.setName(sc.next());
+		player1.setName("P1");
+		player2.setName("P2");
 		System.out.println("Digite as coordenadas separadas por vírgulas (x,x): ");
-
+		int counter = 0;
 		while (!win.winMatch()) {
-			for (int cont = 0; cont <= 9; cont++) {
+			for (counter = 0; counter < 9; counter++) {
+
 				board.showBoard();
+				if (win.winMatch()) {
+					break;
+				}
+
 				String[] coord = sc.next().split(",");
 
 				try {
@@ -42,9 +46,9 @@ public class Match {
 					int column = Integer.parseInt(coord[1]);
 
 					if (board.isSquareEmpty(row, column)) {
-						if (cont % 2 == 0) {
+						if (counter % 2 == 0) {
 							board.markUp(row, column, player1);
-
+							win.winMatch();
 						} else {
 							board.markUp(row, column, player2);
 
@@ -52,36 +56,39 @@ public class Match {
 
 					} else {
 						System.out.println("Quadrado já selecionado");
-						cont = cont - 1;
+						counter--;
 					}
 
 					if (win.winMatch()) {
-						if (cont % 2 == 0) {
+						if (counter % 2 == 0) {
 							System.out.println(player1.getName() + " Ganhou");
-
+							break;
 						} else {
 							System.out.println(player2.getName() + " Ganhou");
-
+							break;
 						}
-					} else {
-						System.out.println("Partida empatada");
+					} else if (board.isBoardFull()) {
+						System.out.println("Partida Empatada");
+						break; //não está parando o loop, resolver depois
 					}
 
 				} catch (Exception e) {
 					if (e instanceof ArrayIndexOutOfBoundsException) {
 						System.out.println("ERRO: Fora do tabuleiro");
-						cont--;
+						counter--;
 					} else if (e instanceof NumberFormatException) {
 
 						System.out.println("ERRO: Caractere inválido");
-						cont--;
+						counter--;
 					} else {
 						System.out.println(e.getMessage());
 
 					}
 				}
+
 			}
-			sc.close();
 		}
+		board.showBoard();
+		sc.close();
 	}
 }

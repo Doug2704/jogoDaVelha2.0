@@ -1,7 +1,5 @@
 package main.entities;
 
-import java.util.function.BooleanSupplier;
-
 public class Board {
 	public static char[][] board = new char[3][3];
 	public int row, column;
@@ -25,7 +23,7 @@ public class Board {
 	}
 
 	public void markUp(int row, int column, Player player) {
-	
+
 		board[row - 1][column - 1] = player.getSimbol();
 
 	}
@@ -38,4 +36,14 @@ public class Board {
 		return false;
 	}
 
+	public boolean isBoardFull() {
+		for (int i = 0; i < board.length; i++) {
+			for (int j = 0; j < board[i].length; j++) {
+				if (board[i][j] == '_') {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 }
