@@ -31,13 +31,10 @@ public class Match {
 		player2.setName("P2");
 		System.out.println("Digite as coordenadas separadas por vírgulas (x,x): ");
 		int counter = 0;
-		while (!win.winMatch()) {
+		while (!win.winMatch() && !board.isBoardFull()) {
 			for (counter = 0; counter < 9; counter++) {
 
 				board.showBoard();
-				if (win.winMatch()) {
-					break;
-				}
 
 				String[] coord = sc.next().split(",");
 
@@ -69,7 +66,9 @@ public class Match {
 						}
 					} else if (board.isBoardFull()) {
 						System.out.println("Partida Empatada");
-						break; //não está parando o loop, resolver depois
+						break;
+					} else {
+
 					}
 
 				} catch (Exception e) {
