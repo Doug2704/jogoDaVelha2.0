@@ -10,6 +10,7 @@ import main.entities.Win;
  * 
  * @author Douglas Candido
  *
+ *
  */
 public class Match {
 
