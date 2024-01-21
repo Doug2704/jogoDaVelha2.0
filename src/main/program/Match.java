@@ -18,6 +18,7 @@ public class Match {
 
 		Scanner sc = new Scanner(System.in);
 		Board board = new Board();
+
 		Win win = new Win();
 		Player player1 = new Player();
 		Player player2 = new Player();
@@ -31,6 +32,7 @@ public class Match {
 		player1.setName("P1");
 		player2.setName("P2");
 		System.out.println("Digite as coordenadas separadas por vírgulas (x,x): ");
+		JFramePrincipal.main(args);
 		int counter = 0;
 		while (!win.winMatch() && !board.isBoardFull()) {
 			for (counter = 0; counter < 9; counter++) {
