@@ -10,7 +10,7 @@ import main.entities.Board;
 import main.entities.Player;
 import main.entities.Win;
 
-public class testWin {
+public class WinTest {
 	private Board testBoard;
 	private Win testWin;
 	private Player testPlayer;

@@ -1,5 +1,9 @@
 package main.entities;
-
+/**
+ * Classe para gerar players
+ * @author Douglas
+ *
+ */
 public class Player {
 	private String name;
 	private char simbol;

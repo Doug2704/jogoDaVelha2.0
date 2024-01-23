@@ -1,5 +1,11 @@
 package main.entities;
 
+/***
+ * Classe responsável por verificar os acertos
+ * 
+ * @author Douglas
+ *
+ */
 public class Win {
 
 	public boolean winRow() {
@@ -37,7 +43,7 @@ public class Win {
 	}
 
 	public boolean winDiagonalToUp() {
-		for (int i = 0; i < 3; i++) {// diagonal subindo /|
+		for (int i = 0; i < 3; i++) {
 			if (Board.board[2][0] != '_' && Board.board[2][0] == Board.board[1][1]
 					&& Board.board[1][1] == Board.board[0][2]) {
 				return true;
@@ -47,6 +53,13 @@ public class Win {
 		return false;
 	}
 
+	/**
+	 * Verifica se um player ganhou uma linha, coluna ou diagonal. Se sim, a partida
+	 * está ganha pelo player atual
+	 * 
+	 * @return false (se nenhum dos 3 foi atendido)
+	 *
+	 */
 	public boolean winMatch() {
 		if (winRow() || winColumn() || winDiagonalToUp() || winDiagonalToDown()) {
 			return true;
